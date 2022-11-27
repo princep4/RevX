@@ -7,13 +7,9 @@ import subprocess
 
 from colorama import init
 from termcolor import colored
- 
-init()
- 
-#print(colored('Hello, World!', 'green', 'on_red'))
 
-# Timeout setup handler
-#import signal
+init()
+
 import sys
 
 #bring out all the strings from the exe
@@ -80,8 +76,9 @@ def yara():
 # Evaluate the hash of file on VT    
 def vt_check():
     
-    print("the hash of the file")
+    #print("the hash of the file")
     import sys
+    import requests
     import hashlib
 
     # BUF_SIZE is totally arbitrary, change for your app!
@@ -102,12 +99,14 @@ def vt_check():
     #print("MD5: {0}".format(file_md5))
     #print("SHA1: {0}".format(sha1.hexdigest()))
     
-    params = {'apikey': 'df8fb7e710b729ebf276b1017340c8f478a3e56a5c1c01e79e22c227232935e8', 'resource':'34f8a7bf720bbfcee7a5c25c79dc9bfa'}
+    params = {'apikey': 'df8fb7e710b729ebf276b1017340c8f478a3e56a5c1c01e79e22c227232935e8', 'resource':file_md5}
     headers = {"Accept-Encoding": "gzip, deflate","User-Agent" : "gzip,  My Python requests library example client or username"}
     response_dict={}
     try:
         response_dict = requests.get('https://www.virustotal.com/vtapi/v2/file/report', 
         params=params).json()
+        # print(hello)
+        # print(response_dict)
 
     except Exception as e:
             print(e)
@@ -122,7 +121,10 @@ def vt_check():
         #hash_of_file=sample_info["md5"]
         sample_info["positives"] = response_dict.get("positives")
         sample_info["total"] = response_dict.get("total")
-        print(sample_info["md5"]+" Positives: "+str(sample_info["positives"])+"Total "+str(sample_info["total"]))
+        print("We fouund the application malicious: \U0001F480\U0001F480\U0001F480")
+        print(" \U000F27A1 Hash of the file:"+sample_info["md5"])
+        print(" \U000F27A1 AV scan found Positives: "+str(sample_info["positives"])+" out of Total AV: "+str(sample_info["total"]))
+        #print(sample_info["md5"]+" Positives: "+str(sample_info["positives"])+" out of Total: "+str(sample_info["total"]))
     else:
         print("Not Found in VT")
         print("The Hash of the file is: "+file_md5)
@@ -150,7 +152,7 @@ print('''
     By: 
     Prince Prafull \U0001F4AA| Aditya Nattu \U0001F4AA| Neeraj Uikey \U0001F4AA \n ''')
 while(i):
-    print("\U0001F680\U0001F680\U0001F680\U0001F680\U0001F680\U0001F680\U0001F680\U0001F680\U0001F680\U0001F680\U0001F680\U0001F680")
+    print("\n \n \U0001F680\U0001F680\U0001F680\U0001F680\U0001F680\U0001F680\U0001F680\U0001F680\U0001F680\U0001F680\U0001F680\U0001F680")
     print("Enter your choice")
     print("1. find encoded values and decode it")
     print("2. YARA rules check")
