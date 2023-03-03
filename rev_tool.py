@@ -148,7 +148,7 @@ print('''
 ╚═╝░░╚═╝╚══════╝░░░╚═╝░░░╚═╝░░╚═╝ 
 
     By: 
-    Prince Prafull \U0001F4AA| Aditya Nattu \U0001F4AA| Neeraj Uikey \U0001F4AA \n ''')
+    Prince Prafull \U0001F4AA \n ''')
 while(i):
     print("\U0001F680\U0001F680\U0001F680\U0001F680\U0001F680\U0001F680\U0001F680\U0001F680\U0001F680\U0001F680\U0001F680\U0001F680")
     print("Enter your choice")
